@@ -57,4 +57,5 @@ int usage_error(void);
 int f_open_error(char *filename);
 int invalid_intstruction(char *opcode, unsigned int line_number);
 int not_int_error(unsigned int line_number);
+void op_tok_errors(int err_code);
 #endif
