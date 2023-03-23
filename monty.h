@@ -8,13 +8,28 @@
 #include <string.h>
 #include <ctype.h>
 
-#define STACK 0
-#define QUEUE 1
-#define DELIMS " \n\t\a\b"
+#define INSTRUCTIONS              \
+	{                           \
+		{"push", push},       \
+		    {"pall", pall},   \
+		    {"pint", pint},   \
+		    {"pop", pop},     \
+		    {"swap", swap},   \
+		    {"nop", nop},     \
+		    {"div", _div},    \
+		    {"mul", _mul},    \
+		    {"add", _add},    \
+		    {"sub", _sub},    \
+		    {"mod", mod},     \
+		    {"pchar", pchar}, \
+		    {"pstr", pstr},   \
+		    {"rotl", rotl},   \
+		    {"rotr", rotr},   \
+		{                     \
+			NULL, NULL      \
+		}                     \
 
-extern char **op_tok;
-
-/**
+ /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
@@ -73,19 +88,4 @@ void queue(stack_t **stack, unsigned int line_number);
 
 char **strtow(char *str, char *delims);
 char *get_int (int n);
-
-/* ERROR MESSAGES */
-int malloc_error(void);
-int usage_error(void);
-int f_open_error(char *filename);
-int invalid_intstruction(char *opcode, unsigned int line_number);
-int not_int_error(unsigned int line_number);
-void op_tok_errors(int err_code);
-int pint_err(unsigned int line_number);
-int pop_err(unsigned int line_number);
-int short_s_err(unsigned int line_number, char *c);
-int unknown_op_error(char *opcode, unsigned int line_number);
-int pint_err(unsigned int line_number);
-int div_error(unsigned int line_number);
-int pchar_error(unsigned int line_number, char *message);
 #endif
