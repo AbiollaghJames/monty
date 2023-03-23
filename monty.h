@@ -13,6 +13,8 @@
 #define QUEUE 1
 #define DELIMS " \n\t\a\b"
 
+extern char **op_tok;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
