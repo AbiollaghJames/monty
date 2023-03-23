@@ -49,7 +49,8 @@ int initialize_s(stack_t **stack);
 int mode(stack_t *stack);
 
 /* OPCODE FUNCTIONS */
-void push(stack_t **head, unsigned int num);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 
 /* ERROR MESSAGES */
 int malloc_error(void);

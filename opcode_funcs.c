@@ -17,7 +17,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (new_node == NULL)
 	{
-		op_tok_error(malloc_error);
+		op_tok_errors(malloc_error);
 		return;
 	}
 
@@ -59,4 +59,21 @@ void push(stack_t **stack, unsigned int line_number)
 		new_node->next = NULL;
 		temp->next = new_node;
 	}
+}
+
+/**
+ * pall - prints stack_t list
+ * @stack: pointer to top of stack
+ * @line_number: working line
+ */
+void pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = (*stack)->next;
+
+	while (temp)
+	{
+		printf("%d", temp->n);
+		temp = temp->next;
+	}
+	(void)line_number;
 }
