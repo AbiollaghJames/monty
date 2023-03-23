@@ -2,6 +2,7 @@
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 
 /**
  * push - pushes elem to stack_t list
@@ -72,8 +73,22 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	while (temp)
 	{
-		printf("%d", temp->n);
+		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
 	(void)line_number;
+}
+/**
+ * pint - prints top most val of stack_t
+ * @stack: pointer to top of stack_t
+ * @line_number: working line
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if ((*stack)->next == NULL)
+	{
+		op_tok_errors(pint_err(line_number));
+		return;
+	}
+	printf("%d\n",(*stack)->next->n);
 }
