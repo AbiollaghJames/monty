@@ -1,7 +1,7 @@
 #include "monty.h"
 void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
-void div(stack_t **stack, unsigned int line_number);
+void divs(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 
@@ -39,11 +39,11 @@ void sub(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 /**
- * div - divs sec val to top
+ * divs - divs sec val to top
  * @stack: pointer to top
  * @line_number: working line no
  */
-void div(stack_t **stack, unsigned int line_number)
+void divs(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
@@ -53,7 +53,7 @@ void div(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->next->n == 0)
 	{
-		set_op_tok_errors(div_error(line_number));
+		op_tok_errors(div_error(line_number));
 		return;
 	}
 
@@ -69,7 +69,7 @@ void mul(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
-		op_tok_errors(short_s_errors(line_number, "mul"));
+		op_tok_errors(short_s_err(line_number, "mul"));
 		return;
 	}
 
@@ -85,7 +85,7 @@ void mod(stack_t **stack, unsigned int line_number)
 {
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
-		op_tok_errors(short_s_errors(line_number, "mod"));
+		op_tok_errors(short_s_err(line_number, "mod"));
 		return;
 	}
 

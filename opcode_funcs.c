@@ -126,13 +126,14 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
 	{
-		op_tok_errors(short_s_err(line_number));
+		op_tok_errors(short_s_err(line_number, ""));
 		return;
+
 	}
 
 	temp = (*stack)->next->next;
 	(*stack)->next->next = temp->next;
-	(*stack)->next->preb = temp
+	(*stack)->next->prev = temp;
 
 	if (temp->next)
 		temp->next->prev = (*stack)->next;

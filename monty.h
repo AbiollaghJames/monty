@@ -6,7 +6,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <string.h>
-#include <fcnt1.h>
 #include <ctype.h>
 
 #define STACK 0
@@ -49,6 +48,9 @@ typedef struct instruction_s
 void free_s(stack_t **stack);
 int initialize_s(stack_t **stack);
 int mode(stack_t *stack);
+void free_toks(void);
+unsigned int len_tok(void);
+int monty(FILE *script_fd);
 
 /* OPCODE FUNCTIONS */
 void push(stack_t **stack, unsigned int line_number);
@@ -59,7 +61,7 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
-void div(stack_t **stack, unsigned int line_number);
+void divs(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
@@ -69,6 +71,8 @@ void rotr(stack_t **stack, unsigned int line_number);
 void stack(stack_t **stack, unsigned int line_number);
 void queue(stack_t **stack, unsigned int line_number);
 
+char **strtow(char *str, char *delims);
+char *get_int (int n);
 
 /* ERROR MESSAGES */
 int malloc_error(void);
@@ -77,4 +81,11 @@ int f_open_error(char *filename);
 int invalid_intstruction(char *opcode, unsigned int line_number);
 int not_int_error(unsigned int line_number);
 void op_tok_errors(int err_code);
+int pint_err(unsigned int line_number);
+int pop_err(unsigned int line_number);
+int short_s_err(unsigned int line_number, char *c);
+int unknown_op_error(char *opcode, unsigned int line_number);
+int pint_err(unsigned int line_number);
+int div_error(unsigned int line_number);
+int pchar_error(unsigned int line_number, char *message);
 #endif
