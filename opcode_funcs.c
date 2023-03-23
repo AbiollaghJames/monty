@@ -3,6 +3,8 @@
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 /**
  * push - pushes elem to stack_t list
@@ -90,5 +92,51 @@ void pint(stack_t **stack, unsigned int line_number)
 		op_tok_errors(pint_err(line_number));
 		return;
 	}
-	printf("%d\n",(*stack)->next->n);
+	printf("%d\n", (*stack)->next->n);
+}
+/**
+* pop - removes top elem of stack_t list
+* @stack: pointer to top of stack
+* @line_number: current working no
+*/
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *nxt = NULL;
+
+	if ((*stack)->next == NULL)
+	{
+		op_tok_errors(pop_err(line_number));
+		return;
+	}
+	nxt = (*stack)->next->next;
+	free((*stack)->next);
+
+	if (nxt)
+		nxt->prev = *stack;
+	(*stack)->next = nxt;
+}
+/**
+ * swap - swaps top two elems
+ * @stack: pointer to top elem
+ * @line_number: working line
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	{
+		op_tok_errors(short_s_err(line_number));
+		return;
+	}
+
+	temp = (*stack)->next->next;
+	(*stack)->next->next = temp->next;
+	(*stack)->next->preb = temp
+
+	if (temp->next)
+		temp->next->prev = (*stack)->next;
+	temp->next = (*stack)->next;
+	temp->prev = *stack;
+	(*stack)->next = temp;
 }
