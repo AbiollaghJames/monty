@@ -9,6 +9,10 @@
 #include <fcnt1.h>
 #include <ctype.h>
 
+#define STACK 0
+#define QUEUE 1
+#define DELIMS " \n\t\a\b"
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -39,6 +43,11 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* STACK OPERATIONS */
+void free_s(stack_t **stack);
+int initialize_s(stack_t **stack);
+int mode(stack_t *stack);
+
 /* OPCODE FUNCTIONS */
 void push(stack_t **head, unsigned int num);
 
@@ -46,4 +55,6 @@ void push(stack_t **head, unsigned int num);
 int malloc_error(void);
 int usage_error(void);
 int f_open_error(char *filename);
+int invalid_intstruction(char *opcode, unsigned int line_number);
+int not_int_error(unsigned int line_number);
 #endif
