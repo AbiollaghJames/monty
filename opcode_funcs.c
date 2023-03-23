@@ -20,7 +20,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (new_node == NULL)
 	{
-		op_tok_errors(malloc_error);
+		op_tok_errors(malloc_error());
 		return;
 	}
 
@@ -40,7 +40,7 @@ void push(stack_t **stack, unsigned int line_number)
 			return;
 		}
 	}
-	new_node->n atoi(op_tok[1]);
+	new_node->n =  atoi(op_tok[1]);
 
 	if (mode(*stack) == STACK)
 	{
