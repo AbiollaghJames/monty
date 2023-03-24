@@ -33,7 +33,7 @@ int usage_error(void)
  */
 int f_open_error(char *filename)
 {
-	fprintf(stderr, "Error: Can't open file", filename);
+	fprintf(stderr, "Error: Can't open file %s", filename);
 	return (EXIT_FAILURE);
 }
 

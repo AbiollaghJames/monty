@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <string.h>
-#include <fcnt1.h>
+#include <fcntl.h>
 #include <ctype.h>
 
 #define STACK 0
