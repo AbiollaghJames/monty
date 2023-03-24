@@ -2,6 +2,7 @@
 #define MONTY_H
 
 #include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <unistd.h>
