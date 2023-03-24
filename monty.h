@@ -105,4 +105,7 @@ void opcode(stack_t **stack, char *str, unsigned int line_cnt);
 int is_digit(char *string);
 int isnumber(char *str);
 
+/* Custom implementations */
+int _isascii(int c);
+
 #endif
